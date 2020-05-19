@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -8,6 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   user: {id: number, name: string};
+  paramsSubscription: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -24,6 +26,10 @@ export class UserComponent implements OnInit {
           this.user.name = params['name'];
         }
       );
+  }
+
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe(); //Anhular does this for us,Once we write our own observables we have to destroy it after the use..
   }
 
 }
