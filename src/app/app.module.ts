@@ -16,6 +16,7 @@ import { ServersService } from './servers/servers.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-gaurd.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-gaurd.service';
 
  
 
@@ -36,7 +37,7 @@ import { AuthGuard } from './auth-gaurd.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ServersService, AuthService, AuthGuard],
+  providers: [ServersService, AuthService, AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
